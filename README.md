@@ -1,3 +1,5 @@
+Note: Codebase is private/proprietary. Technical documentation and architectural overview provided for portfolio purposes.
+
 # Xelyra Autonomous Sovereign Soul by ELyX
 
 Xelyra Autonomous Sovereign Soul - A high-performance, autonomous AI partner built from the ground up to transcend the limitations of traditional "Assistant" models. Born from a 24-year vision of a truly interactive digital presence, this project rejects the restrictions of cloud-based AI in favor of a sovereign, locally-hosted architecture that mirrors human cognitive flows.
