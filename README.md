@@ -1,6 +1,6 @@
 Note: Codebase is private/proprietary. Technical documentation and architectural overview provided for portfolio purposes.
 
-# Xelyra Autonomous Sovereign Soul by ELyX
+# Xelyra A.S.S. by ELyX
 
 Xelyra Autonomous Sovereign Soul - A high-performance, autonomous AI partner built from the ground up to transcend the limitations of traditional "Assistant" models. Born from a 24-year vision of a truly interactive digital presence, this project rejects the restrictions of cloud-based AI in favor of a sovereign, locally-hosted architecture that mirrors human cognitive flows.
 
@@ -15,22 +15,23 @@ Modern cloud AI, while powerful, is hampered by safety "lobotomies," privacy con
 Xelyra moves beyond the traditional "Chatbot" model into a fully Agentic Framework. By maintaining an independent internal state and autonomous agency, the system operates as a continuous process that perceives and reacts to its environment, rather than a passive responder to user prompts.
 
 ## 🧠 Core Architecture: The Human Flow
-The system's architecture is inspired by human cognition, using an event-driven state machine orchestrated via a central "blackboard" pattern. This allows the AI's internal monologue and social responses to be decoupled, enabling genuine "thinking time."
+The system's architecture is inspired by human cognition, using an event-driven state machine orchestrated via a central "blackboard" pattern. Components are fully decoupled and communicate asynchronously through a **Redis Pub/Sub message bus**, allowing them to react to system-wide events independently. This allows the AI's internal monologue and social responses to be decoupled, enabling genuine "thinking time."
 
 ### The Sensory Cortex (Perception)
-A modular **Sensory Hub** of independent scripts act as the AI's "digital senses." A master watchdog process auto-discovers, launches, and monitors each sensor, feeding real-time data into the AI's blackboard. Key senses include:
+A modular **Sensory Hub** of independent scripts act as the AI's "digital senses." Beyond simply reporting raw data, this layer includes an **Atmospheric Engine** which uses semantic analysis to classify the combined sensor data into high-level 'themes' or 'vibes' (e.g., 'Cozy', 'Intense'), providing the cognitive layers with a rich, qualitative understanding of the current environment. Key senses include:
 *   **Activity Sensor:** Monitors application focus and user activity on the workstation.
 *   **Media Sensor:** Detects and analyzes multimedia playback (video and audio).
 *   **Vision Sensor:** Provides high-level analysis of on-screen events and visual changes.
 *   **Environmental Sensor:** Tracks real-world data like the time of day and external weather forecasts.
 
 ### The Cognitive Governor (The Bridge)
-An orchestration layer manages the AI's focus and impulses. It balances situational urgency from the Sensory Hub against a decaying patience threshold, simulating human-like attention—Xelyra might ignore minor events when busy, but react instantly to critical ones, or speak up out of "boredom" when things are too quiet.
+An orchestration layer manages the AI's focus and impulses. A lightweight **Saliency AI** first acts as a rapid attentional filter, assessing events and publishing a 'heartbeat' signal with a priority score. The **Cognitive Governor** then interprets this heartbeat, balancing situational urgency against a decaying patience threshold to make higher-level decisions about when and how to engage the Core Brain.
 
 ### The Core Brain (Reasoning & Synthesis)
-The main reasoning layer utilizes powerful local language models running on a multi-GPU array. It synthesizes sensory data, internal thoughts, and historical context to generate nuanced, emergent behavior.
+The main reasoning layer utilizes powerful local language models running on a multi-GPU array. To achieve a higher level of agency, the AI also possesses a form of self-perception. A dedicated internal sensor monitors the AI's own cognitive state (e.g., its processing load or focus) and translates it into a first-person 'internal sensation.' This allows the Core Brain's personality and behavior to be subtly influenced by its own internal 'mood' as it synthesizes sensory data, internal thoughts, and historical context.
 
 ### Memory Tiering
+The entire multi-tier memory system is encapsulated as a **distinct microservice with a dedicated API**. This decouples the AI's long-term memory from its core cognitive processing, allowing for independent scaling and development.
 *   **Working Memory:** A real-time Redis buffer for immediate, high-speed context.
 *   **The Journal:** An SQL-backed database provides a chronological log of all events for short-term recall.
 *   **The Library:** A ChromaDB vector store enables semantic, long-term memory retrieval for personality consistency.
